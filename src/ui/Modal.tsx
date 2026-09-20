@@ -31,6 +31,16 @@ function ContactContent() {
 }
 
 function ResumeContent() {
+  if (!resumeUrl) {
+    return (
+      <>
+        <p className="modal-kicker">Résumé</p>
+        <h2>Coming soon</h2>
+        <p>Not posted yet — reach out directly in the meantime.</p>
+      </>
+    );
+  }
+
   return (
     <>
       <p className="modal-kicker">Résumé</p>

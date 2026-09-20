@@ -9,6 +9,7 @@ import { StartScreen } from "./ui/StartScreen";
 import { HUD } from "./ui/HUD";
 import { Modal } from "./ui/Modal";
 import { TouchControls } from "./ui/TouchControls";
+import { QuickNav } from "./ui/QuickNav";
 import { InteractHandler } from "./ui/InteractHandler";
 import "./ui/ui.css";
 
@@ -31,6 +32,7 @@ export default function App() {
         <>
           <HUD />
           <TouchControls />
+          <QuickNav />
         </>
       )}
       <Modal />

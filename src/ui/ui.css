@@ -302,6 +302,71 @@
   color: #ff6f59;
 }
 
+/* ---------- quick nav ---------- */
+.quicknav {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 40;
+  pointer-events: all;
+}
+.quicknav-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(28, 28, 28, 0.82);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+.quicknav-toggle:hover {
+  background: #1c1c1c;
+}
+.quicknav-panel {
+  position: absolute;
+  top: 54px;
+  right: 0;
+  min-width: 190px;
+  background: #fffdf8;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: modal-in 0.15s ease-out;
+}
+.quicknav-item {
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #1c1c1c;
+}
+.quicknav-item:hover {
+  background: #f1f0e9;
+}
+.quicknav-item.quicknav-sub {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #4a4a4a;
+  padding-left: 20px;
+}
+.quicknav-group-label {
+  padding: 8px 12px 2px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ff6f59;
+}
+
 /* ---------- touch controls ---------- */
 .touch-controls {
   display: none;

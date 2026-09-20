@@ -23,7 +23,11 @@ export function StartScreen() {
           <span className="key">E</span>
           interact
         </span>
-        <span className="start-hint">or use the on-screen joystick on mobile</span>
+        <span className="start-hint">
+          <span className="key">☰</span>
+          jump to any section
+        </span>
+        <span className="start-hint">joystick + tap on mobile</span>
       </div>
     </div>
   );

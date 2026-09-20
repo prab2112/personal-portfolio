@@ -50,6 +50,32 @@ export const PROJECT_PEDESTALS = projects.map((project, i) => {
   };
 });
 
+// Visible ground paths from spawn to each zone, so the island is easy to
+// read at a glance instead of requiring blind wandering.
+export const PATH_WIDTH = 2.6;
+
+export const PATHS: { from: [number, number]; to: [number, number] }[] = [
+  { from: [SPAWN_POSITION[0], SPAWN_POSITION[2]], to: [ZONES.resume.position[0], ZONES.resume.position[2]] },
+  { from: [ZONES.resume.position[0], ZONES.resume.position[2]], to: [ZONES.projects.position[0], ZONES.projects.position[2]] },
+  { from: [SPAWN_POSITION[0], SPAWN_POSITION[2]], to: [ZONES.about.position[0], ZONES.about.position[2]] },
+  { from: [SPAWN_POSITION[0], SPAWN_POSITION[2]], to: [ZONES.contact.position[0], ZONES.contact.position[2]] },
+];
+
+function distanceToSegment(px: number, pz: number, [ax, az]: [number, number], [bx, bz]: [number, number]) {
+  const abx = bx - ax;
+  const abz = bz - az;
+  const abLenSq = abx * abx + abz * abz;
+  let t = abLenSq === 0 ? 0 : ((px - ax) * abx + (pz - az) * abz) / abLenSq;
+  t = Math.max(0, Math.min(1, t));
+  const cx = ax + abx * t;
+  const cz = az + abz * t;
+  return Math.hypot(px - cx, pz - cz);
+}
+
+function isNearAnyPath(x: number, z: number) {
+  return PATHS.some(({ from, to }) => distanceToSegment(x, z, from, to) < PATH_WIDTH + 1.6);
+}
+
 // Simple deterministic scatter for decorative trees/rocks so the world
 // doesn't feel like an empty plane, kept out of the walkable/zone areas.
 function seededRandom(seed: number) {
@@ -79,7 +105,7 @@ export const DECORATIONS = (() => {
     const dist = 6 + rand() * (ISLAND_RADIUS - 8);
     const x = Math.cos(angle) * dist;
     const z = Math.sin(angle) * dist;
-    if (isInsideAnyZone(x, z)) continue;
+    if (isInsideAnyZone(x, z) || isNearAnyPath(x, z)) continue;
     items.push({
       position: [x, 0, z],
       scale: 0.7 + rand() * 0.9,

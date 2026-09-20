@@ -1,5 +1,5 @@
 import { RigidBody } from "@react-three/rapier";
-import { ISLAND_RADIUS, DECORATIONS } from "../content/layout";
+import { ISLAND_RADIUS, DECORATIONS, PATHS, PATH_WIDTH } from "../content/layout";
 
 function Tree({ position, scale }: { position: [number, number, number]; scale: number }) {
   return (
@@ -29,6 +29,21 @@ function Rock({ position, scale }: { position: [number, number, number]; scale: 
   );
 }
 
+function PathStrip({ from, to }: { from: [number, number]; to: [number, number] }) {
+  const dx = to[0] - from[0];
+  const dz = to[1] - from[1];
+  const length = Math.hypot(dx, dz);
+  const angle = Math.atan2(dx, dz);
+  const midX = (from[0] + to[0]) / 2;
+  const midZ = (from[1] + to[1]) / 2;
+  return (
+    <mesh receiveShadow position={[midX, -0.44, midZ]} rotation={[0, angle, 0]}>
+      <boxGeometry args={[PATH_WIDTH, 0.04, length]} />
+      <meshStandardMaterial color="#ead9a0" flatShading />
+    </mesh>
+  );
+}
+
 export function World() {
   return (
     <>
@@ -45,6 +60,10 @@ export function World() {
         <cylinderGeometry args={[ISLAND_RADIUS + 3.5, ISLAND_RADIUS - 6, 5, 48]} />
         <meshStandardMaterial color="#8a6a4e" flatShading />
       </mesh>
+
+      {PATHS.map((p, i) => (
+        <PathStrip key={i} from={p.from} to={p.to} />
+      ))}
 
       {DECORATIONS.map((d, i) =>
         d.kind === "tree" ? (
