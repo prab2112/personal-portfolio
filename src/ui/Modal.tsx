@@ -79,18 +79,20 @@ function ProjectContent({ id }: { id: string }) {
           </span>
         ))}
       </div>
-      <div className="link-row">
-        {project.link && (
-          <a className="link-button" href={project.link} target="_blank" rel="noreferrer">
-            Live site
-          </a>
-        )}
-        {project.repo && (
-          <a className="link-button secondary" href={project.repo} target="_blank" rel="noreferrer">
-            Source
-          </a>
-        )}
-      </div>
+      {(project.link || project.repo) && (
+        <div className="link-row">
+          {project.link && (
+            <a className="link-button" href={project.link} target="_blank" rel="noreferrer">
+              Live site
+            </a>
+          )}
+          {project.repo && (
+            <a className="link-button secondary" href={project.repo} target="_blank" rel="noreferrer">
+              Source
+            </a>
+          )}
+        </div>
+      )}
       {projects.length > 1 && (
         <div className="project-nav">
           <button onClick={() => openProjectModal(prev.id)}>&larr; {prev.title}</button>

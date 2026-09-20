@@ -14,39 +14,41 @@ export interface ProjectEntry {
 
 export const profile = {
   name: "Prabhakar Pandey",
-  // TODO: replace with your actual title — kept generic, no employer names
-  role: "Software Engineer",
-  tagline: "I build things for the web.",
-  bio: "Replace this with a couple of sentences about who you are, what you work on, and what you're into — no employer names. Keep it short: this is the kind of thing people skim while a little character walks around a floating island.",
-  location: "Somewhere, Earth",
+  role: "Technical Lead",
+  tagline: "I build scalable backend systems and the frontends that make them usable.",
+  bio: "Technical Lead with 10+ years building high-performance, scalable applications — mostly Java/Spring Boot backends paired with React or Angular frontends. I like the kind of work that shows up as a real number afterward: faster response times, fewer errors, less manual effort.",
+  location: "Bangalore, India",
 };
 
+// Pulled from real work, described without naming employers.
 export const projects: ProjectEntry[] = [
   {
-    id: "project-1",
-    title: "Project One",
+    id: "colleague-events-platform",
+    title: "Colleague Events Platform",
     description:
-      "A short description of the first project — what it does, what problem it solves, and what you used to build it.",
-    tags: ["TypeScript", "React"],
-    link: "https://example.com",
-    repo: "https://github.com/prab2112/project-one",
+      "A large, multi-module backend powering colleague event processing and related services — feedback, profiles, org structure, performance, notifications, reporting. Built as clean, independently-owned Gradle modules behind OpenAPI-generated REST controllers.",
+    tags: ["Java 17", "Spring Boot 3", "Gradle", "OpenAPI", "React"],
   },
   {
-    id: "project-2",
-    title: "Project Two",
+    id: "claims-processing",
+    title: "Medical Claims Processing",
     description:
-      "A short description of the second project. Swap this out with something real from your portfolio.",
-    tags: ["Node.js", "PostgreSQL"],
-    link: "https://example.com",
-    repo: "https://github.com/prab2112/project-two",
+      "Reworked the backend and frontend of a medical claims pipeline: cut processing time by 38% (13min → 8min), enabled straight-through processing to cut manual approvals by 25%, and improved document workflows (questionnaires, claim forms, lab reports) for a 25% speedup and 30% better accuracy.",
+    tags: ["Java", "Spring Boot", "React", "Kafka", "AWS"],
   },
   {
-    id: "project-3",
-    title: "Project Three",
+    id: "hts-classifier",
+    title: "ML-Powered Trade Code Classifier",
     description:
-      "A third project entry. Add or remove entries freely — the world generates one pedestal per project automatically.",
-    tags: ["Python", "ML"],
-    repo: "https://github.com/prab2112/project-three",
+      "Designed and shipped a machine-learning classifier for HTS trade codes, cutting classification errors by 60%. Also improved the surrounding microservices' API response times by 40%.",
+    tags: ["Java", "Angular", "Spring Boot", "Machine Learning", "AWS"],
+  },
+  {
+    id: "sso-db-monitoring",
+    title: "SSO & Live DB Monitoring",
+    description:
+      "Integrated OAuth/SAML-based single sign-on, improving authentication security by 50%, and designed a RESTful service for real-time Oracle/SQL Server monitoring that cut troubleshooting time by 35%.",
+    tags: ["Java", "OAuth", "SAML", "SQL Server", "Oracle"],
   },
 ];
 
